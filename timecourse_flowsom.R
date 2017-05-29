@@ -36,8 +36,9 @@ file_names <- list(Primed="data/export_Primed.fcs",
 
 
 set.seed(3)
+#Only include columns with markers to use for building the SOM
 out_fSOM <- ReadInput(unlist(file_names), compensate = FALSE, transform = TRUE, scale = TRUE, toTransform = c(7,8,9,10,11,12))
-#Excluding GFP 7AAD
+
 out_fSOM <- BuildSOM(out_fSOM,colsToUse = c(7,8,9,10,11,12), xdim = 10, ydim = 10) 
 # grid size (e.g. 10x10 or 20x20 grid, i.e. 100 or 400 clusters)
 
@@ -46,7 +47,7 @@ out_fSOM <- BuildMST(out_fSOM, tSNE=FALSE)
 
 PlotStars(out_fSOM)
 
-
+#Highlight each dataset on the MST
 manual <- factor(unlist(list(rep("Primed",nrow(Primed_expr)), rep("DAY2",nrow(DAY2_expr)), rep("DAY4",nrow(DAY4_expr)),
                              rep("DAY6",nrow(DAY6_expr)), rep("DAY8",nrow(DAY8_expr)), rep("DAY10",nrow(DAY10_expr)), 
                              rep("Naive",nrow(Naive_expr)))), levels = c("Primed", "DAY2", "DAY4", "DAY6", "DAY8", "DAY10", "Naive"))
