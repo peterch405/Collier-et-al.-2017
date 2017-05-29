@@ -4,9 +4,7 @@ Scripts to reproduce FlowSOM time course analysis in Collier et al.
 
 Before performing analysis, QC needs to be performed on the flow cytometry data. We recommend using `flowAI <https://www.bioconductor.org/packages/release/bioc/html/flowAI.html>`_ with the automatic method (always check the output makes sense).
 
-
-.. code:: R
-    resQC <- flow_auto_qc(fcsfiles)
+``resQC <- flow_auto_qc(fcsfiles)``
 
 After QC, compensation was performed using FlowJO. Dead cells and doublets were excluded and the final compensated data was exported. (FCS files can alternatively be compensated in R)
 
